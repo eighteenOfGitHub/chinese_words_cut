@@ -20,7 +20,7 @@ def get_THUOCL_words():
                 line = line.split()
                 if len(line) == 2:
                     words[line[0]] = line[1]
-        print(file, 'done')
+        # print(file, 'done')
     return words
 
 

@@ -6,10 +6,10 @@ A simple Streamlit app template for you to modify!
 
 ### How to run it on your own machine
 
-1. Install the requirements
+1. url
 
    ```
-   $ pip install -r requirements.txt
+   $ https://chinese-words-cut-eighteen.streamlit.app/
    ```
 
 2. Run the app
