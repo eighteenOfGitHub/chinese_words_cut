@@ -5,10 +5,10 @@ from words_cut_func import *
 
 
 names_to_funcs = {
-    
     'FMM': FMM,
     'BMM': BMM,
-    'Bi-MM': Bi_MM
+    'Bi-MM': Bi_MM,
+    'N-Gram': N_Gram
 }
 
 data_names = [
@@ -17,17 +17,14 @@ data_names = [
     '词库融合'
 ]
 
-def main():
-
-
-
+def main():  
     st.write("# 欢迎来到**分词系统**! 👋")
 
     st.markdown("-----------------------")
 
-    fun_name = st.selectbox("选择算法", names_to_funcs.keys())
-    data_name = st.selectbox("选择数据源", data_names)
-    sentence = st.text_input("请输入中文句子：", "你好，世界！")
+    fun_name = st.sidebar.selectbox("选择算法", names_to_funcs.keys())
+    data_name = st.sidebar.selectbox("选择数据源", data_names)
+    sentence = st.text_input("请输入中文句子：", "我们要为中国人民办公益事业")
 
     is_exe = st.button("分词")
 
