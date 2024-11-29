@@ -2,11 +2,40 @@ import json
 import os
 
 # 获得词表
-def get_words_dic():
+def get_1998_news_words():
     words_path = './data/news_1_gram.json'
     with open(words_path, 'r', encoding='utf-8') as f:
         words = json.load(f)
     return words
+
+def get_THUOCL_words():
+    data_path = './data/THUOCL'
+    # 得到文件列表中的所有文件名
+    files = os.listdir(data_path)
+    # 遍历文件名列表，将文件中的内容添加到words字典中
+    words = {}
+    for file in files:
+        with open(os.path.join(data_path, file), 'r', encoding='utf-8') as f:
+            for line in f:
+                line = line.split()
+                if len(line) == 2:
+                    words[line[0]] = line[1]
+        print(file, 'done')
+    return words
+
+
+
+def get_words_dic(data_name):
+    if data_name == '1998版新闻':
+       words = get_1998_news_words()
+    elif data_name == 'THUOCL清华数据源':
+       words = get_THUOCL_words()
+    elif data_name == '词库融合':
+       words = get_1998_news_words()
+       words.update(get_THUOCL_words())
+    return words
+
+
 
 def FMM(sentence, words_dic):
     max_length = max(len(word) for word in words_dic)
